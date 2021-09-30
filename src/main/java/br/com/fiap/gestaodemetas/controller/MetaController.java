@@ -3,23 +3,23 @@ package br.com.fiap.gestaodemetas.controller;
 
 import br.com.fiap.gestaodemetas.base.BaseController;
 import br.com.fiap.gestaodemetas.base.BaseService;
-import br.com.fiap.gestaodemetas.entity.Funcionario;
+import br.com.fiap.gestaodemetas.entity.Meta;
 import br.com.fiap.gestaodemetas.entity.Status;
-import br.com.fiap.gestaodemetas.service.FuncionarioService;
+import br.com.fiap.gestaodemetas.service.MetaService;
 import br.com.fiap.gestaodemetas.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
-@RequestMapping("funcionario")
-public class FuncionarioController extends BaseController<Funcionario> {
+@RequestMapping("meta")
+public class MetaController extends BaseController<Meta> {
 
     @Autowired
-    private FuncionarioService service;
+    private MetaService service;
 
     @Override
-    protected BaseService<Funcionario> service() {
+    protected BaseService<Meta> service() {
         return service;
     }
 }

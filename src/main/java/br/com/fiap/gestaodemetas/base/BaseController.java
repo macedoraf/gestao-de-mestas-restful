@@ -8,23 +8,19 @@ import java.util.List;
 
 public abstract class BaseController<Entity> {
 
-    public final BaseService<Entity> service;
-
-    protected BaseController(BaseService<Entity> service) {
-        this.service = service;
-    }
+    protected abstract BaseService<Entity> service();
 
     @PostMapping
     @CrossOrigin
     public ResponseEntity<Entity> create(@RequestBody Entity entity) {
-        return ResponseEntity.ok(service.create(entity));
+        return ResponseEntity.ok(service().create(entity));
 
     }
 
     @RequestMapping(path = "/{idEntity}", method = RequestMethod.DELETE)
     @CrossOrigin
     public ResponseEntity<String> delete(@PathVariable(name = "idEntity") long idEntity) {
-        service.delete(idEntity);
+        service().delete(idEntity);
         return ResponseEntity.ok("Deletado com Sucesso");
     }
 
@@ -32,7 +28,7 @@ public abstract class BaseController<Entity> {
     @GetMapping
     @CrossOrigin
     public ResponseEntity<List<Entity>> listAll() {
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(service().getAll());
     }
 
 }

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public class BaseService<S> {
+public abstract class BaseService<S> {
 
     private final JpaRepository<S, Long> repository;
 
