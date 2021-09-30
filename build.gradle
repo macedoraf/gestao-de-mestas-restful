@@ -2,59 +2,27 @@ plugins {
 	id 'org.springframework.boot' version '2.5.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'org.springframework.experimental.aot' version '0.10.4'
-	id 'org.graalvm.buildtools.native' version '0.9.3'
-	id 'org.hibernate.orm'
 }
 
 group = 'br.com.fiap'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
 repositories {
-	maven { url 'https://repo.spring.io/release' }
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.4'
-	implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.5.4'
-	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
-	compileOnly 'org.projectlombok:lombok:1.18.20'
-	runtimeOnly 'org.postgresql:postgresql:42.2.23.jre7'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.4'
-	annotationProcessor 'org.projectlombok:lombok:1.18.20'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+
+	implementation 'org.postgresql:postgresql:42.2.23.jre7'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.5.Final'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'com.zaxxer:HikariCP:3.4.1'
 }
 
 test {
 	useJUnitPlatform()
-}
-
-bootBuildImage {
-	builder = 'paketobuildpacks/builder:tiny'
-	environment = ['BP_NATIVE_IMAGE': 'true']
-}
-
-nativeBuild {
-	classpath processAotResources.outputs, compileAotJava.outputs
-}
-
-nativeTest {
-	classpath processAotTestResources.outputs, compileAotTestJava.outputs
-}
-
-hibernate {
-	enhance {
-		enableLazyInitialization = true
-		enableDirtyTracking = true
-		enableAssociationManagement = true
-		enableExtendedEnhancement = false
-	}
 }
