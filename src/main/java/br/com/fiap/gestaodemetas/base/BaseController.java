@@ -17,7 +17,14 @@ public abstract class BaseController<Entity> {
 
     }
 
-    @RequestMapping(path = "/{idEntity}", method = RequestMethod.DELETE)
+    @PutMapping(path = "/{idEntity}")
+    @CrossOrigin
+    public ResponseEntity<Entity> update(@PathVariable(name = "idEntity") long id, @RequestBody Entity entity) {
+        return ResponseEntity.ok(service().update(id, entity));
+
+    }
+
+    @DeleteMapping(path = "/{idEntity}")
     @CrossOrigin
     public ResponseEntity<String> delete(@PathVariable(name = "idEntity") long idEntity) {
         service().delete(idEntity);

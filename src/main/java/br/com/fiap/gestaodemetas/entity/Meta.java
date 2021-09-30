@@ -1,7 +1,9 @@
 package br.com.fiap.gestaodemetas.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "Meta")
@@ -13,13 +15,15 @@ public class Meta {
 
     private String descricao;
 
-    private Calendar data;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date data;
 
     private String metascol;
 
     private String dificuldade;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "funcionario_ID")
     private Funcionario funcionario;
 
     @ManyToOne
@@ -33,7 +37,7 @@ public class Meta {
     public Meta() {
     }
 
-    public Meta(long id, String descricao, Calendar data, String metascol, String dificuldade) {
+    public Meta(long id, String descricao, Date data, String metascol, String dificuldade) {
         this.id = id;
         this.descricao = descricao;
         this.data = data;
@@ -57,11 +61,11 @@ public class Meta {
         this.descricao = descricao;
     }
 
-    public Calendar getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

@@ -20,9 +20,9 @@ public abstract class BaseService<S> {
         repository.deleteById(id);
     }
 
-    public void update(long id, S entity) {
+    public S update(long id, S entity) {
         repository.deleteById(id);
-        repository.save(entity);
+        return repository.save(entity);
     }
 
     public List<S> getAll() {
