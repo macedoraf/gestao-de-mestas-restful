@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class BaseService<S> {
 
-    private final JpaRepository<S, Long> repository;
+    protected final JpaRepository<S, Long> repository;
 
     public BaseService(JpaRepository<S, Long> repository) {
         this.repository = repository;

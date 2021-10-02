@@ -30,19 +30,18 @@ public class Meta {
     @JoinColumn(name = "status_id")
     private Status status;
 
-    public Status getStatus() {
-        return status;
-    }
-
     public Meta() {
     }
 
-    public Meta(long id, String descricao, Date data, String metascol, String dificuldade) {
+    public Meta(long id, String descricao, Date data, String metascol,
+                String dificuldade, Funcionario funcionario, Status status) {
         this.id = id;
         this.descricao = descricao;
         this.data = data;
         this.metascol = metascol;
         this.dificuldade = dificuldade;
+        this.funcionario = funcionario;
+        this.status = status;
     }
 
     public long getId() {
@@ -83,5 +82,21 @@ public class Meta {
 
     public void setDificuldade(String dificuldade) {
         this.dificuldade = dificuldade;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
