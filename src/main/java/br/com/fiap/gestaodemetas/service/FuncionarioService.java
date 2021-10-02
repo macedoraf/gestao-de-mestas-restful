@@ -20,6 +20,7 @@ public class FuncionarioService extends BaseService<Funcionario> {
                 result.setId(funcionario.getId());
                 result.setNome(funcionario.getNome());
                 result.setEmpresa(funcionario.getEmpresa());
+                result.setMetas(funcionario.getMetas());
             }
         });
         return result;
