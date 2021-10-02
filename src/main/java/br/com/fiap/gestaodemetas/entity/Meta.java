@@ -22,8 +22,6 @@ public class Meta {
 
     private String dificuldade;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Funcionario funcionario;
 
     @ManyToOne
     @JoinColumn(name = "status_id")
@@ -33,13 +31,12 @@ public class Meta {
     }
 
     public Meta(long id, String descricao, Date data, String metascol,
-                String dificuldade, Funcionario funcionario, Status status) {
+                String dificuldade, Status status) {
         this.id = id;
         this.descricao = descricao;
         this.data = data;
         this.metascol = metascol;
         this.dificuldade = dificuldade;
-        this.funcionario = funcionario;
         this.status = status;
     }
 
@@ -81,14 +78,6 @@ public class Meta {
 
     public void setDificuldade(String dificuldade) {
         this.dificuldade = dificuldade;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
     }
 
     public Status getStatus() {

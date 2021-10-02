@@ -20,11 +20,8 @@ public class Funcionario {
 
     private String senha;
 
-    @OneToMany(
-            mappedBy = "funcionario",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "funcionario_id")
     private List<Meta> metas = new ArrayList();
 
     @ManyToOne

@@ -29,14 +29,4 @@ public class MetaController extends BaseController<Meta> {
     protected BaseService<Meta> service() {
         return service;
     }
-
-    @GetMapping("/funcionario/{id}")
-    public ResponseEntity requestMetaByFuncionarioId(@PathVariable("id") long id) {
-        List<Meta> result = service.findMetasByFuncionario(id);
-        if (!result.isEmpty()) {
-            return ResponseEntity.ok(result);
-        } else {
-            return ResponseEntity.noContent().build();
-        }
-    }
 }

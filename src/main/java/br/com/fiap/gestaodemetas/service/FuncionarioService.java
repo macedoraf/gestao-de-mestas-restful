@@ -8,6 +8,7 @@ import br.com.fiap.gestaodemetas.repository.MetaRepository;
 import org.graalvm.compiler.phases.common.inlining.policy.GreedyInliningPolicy;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 @Service
@@ -15,7 +16,6 @@ public class FuncionarioService extends BaseService<Funcionario> {
     public FuncionarioService(FuncionarioRepository repository) {
         super(repository);
     }
-
 
     public Funcionario login(String name, String password) {
         final Funcionario result = new Funcionario();
