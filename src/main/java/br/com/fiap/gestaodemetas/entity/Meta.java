@@ -23,7 +23,6 @@ public class Meta {
     private String dificuldade;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "funcionario_ID")
     private Funcionario funcionario;
 
     @ManyToOne
