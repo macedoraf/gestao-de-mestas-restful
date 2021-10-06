@@ -1,0 +1,46 @@
+<html th:replace="~{base :: layout (~{:: main})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<main>
+    <h3>Funcionario</h3>
+    <form method="post" action="#" th:object="${funcionario}" th:action="@{/cadastra-funcionario}">
+        <div class="form-group">
+            <label for="nome-funcionario">Nome</label>
+            <input type="text" class="form-control" id="nome-funcionario" aria-describedby="emailHelp"
+                   placeholder="Nome do funcionario" th:field="*{nome}">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                   placeholder="Email" th:field="*{email}">
+        </div>
+
+        <div class="form-group">
+            <label for="cargo">Cargo</label>
+            <input type="text" class="form-control" id="cargo" placeholder="Cargo" th:field="*{cargo}">
+        </div>
+
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" placeholder="Senha" th:field="*{senha}">
+        </div>
+
+
+        <div class="form-group">
+            <label for="funcional">Funcional</label>
+            <input type="text" class="form-control" id="funcional" placeholder="Senha" th:field="*{funcional}">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="empresa">Empresa</label>
+            <select id="empresa" th:field="*{empresa}">
+                <option th:each="item : ${empresas}" th:value="${item}" th:utext="${item.nome}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</main>
+</body>
+</html>

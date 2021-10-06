@@ -22,9 +22,9 @@ public class FuncionarioController extends BaseController<Funcionario> {
     }
 
     @GetMapping("/login")
-    public ResponseEntity requestLogin(@RequestParam("name") String name,
+    public ResponseEntity requestLogin(@RequestParam("funcional") long funcional,
                                        @RequestParam("password") String password) {
-        Funcionario result = service.login(name, password);
+        Funcionario result = service.login(funcional, password);
         if (result != null && result.getNome() != null) {
             return ResponseEntity.ok(result);
         } else {

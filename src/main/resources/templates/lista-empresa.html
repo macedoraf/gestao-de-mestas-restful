@@ -1,0 +1,26 @@
+<html th:replace="~{base :: layout (~{:: main})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<main>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th> Nome</th>
+            <th> CNPJ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${empresas.empty}">
+            <td colspan="2"> Sem empresas cadastradas</td>
+        </tr>
+        <tr th:each="empresa : ${empresas}">
+            <td><span th:text="${empresa.id}"> </span></td>
+            <td><span th:text="${empresa.nome}"> </span></td>
+            <td><span th:text="${empresa.cnpj}"> </span></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

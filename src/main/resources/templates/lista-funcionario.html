@@ -1,0 +1,36 @@
+<html th:replace="~{base :: layout (~{:: main})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<main>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th> Nome</th>
+            <th> Email</th>
+            <th> Cargo</th>
+            <th> Senha</th>
+            <th> Funcional</th>
+            <th> Metas</th>
+            <th> Empresa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${empresas.empty}">
+            <td colspan="2"> Sem empresas cadastradas</td>
+        </tr>
+        <tr th:each="funcionario : ${funcionarios}">
+            <td><span th:text="${funcionario.id}"> </span></td>
+            <td><span th:text="${funcionario.nome}"> </span></td>
+            <td><span th:text="${funcionario.email}"> </span></td>
+            <td><span th:text="${funcionario.cargo}"> </span></td>
+            <td><span th:text="${funcionario.senha}"> </span></td>
+            <td><span th:text="${funcionario.funcional}"> </span></td>
+            <td><span th:text="${funcionario.metas}"> </span></td>
+            <td><span th:text="${funcionario.empresa.nome}"> </span></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

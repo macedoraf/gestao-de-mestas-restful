@@ -11,13 +11,14 @@ public class FuncionarioService extends BaseService<Funcionario> {
         super(repository);
     }
 
-    public Funcionario login(String name, String password) {
+    public Funcionario login(long funcional, String password) {
         final Funcionario result = new Funcionario();
         repository.findAll().forEach(funcionario -> {
-            if (funcionario.getNome().equals(name) && funcionario.getSenha().equals(password)) {
+            if (funcionario.getFuncional() == funcional && funcionario.getSenha().equals(password)) {
                 result.setCargo(funcionario.getCargo());
                 result.setEmail(funcionario.getEmail());
                 result.setId(funcionario.getId());
+                result.setFuncional(funcionario.getFuncional());
                 result.setNome(funcionario.getNome());
                 result.setEmpresa(funcionario.getEmpresa());
                 result.setMetas(funcionario.getMetas());

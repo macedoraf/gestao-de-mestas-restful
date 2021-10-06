@@ -18,26 +18,41 @@ public class Meta {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date data;
 
-    private String metascol;
-
     private String dificuldade;
 
+    private String status;
 
     @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Status status;
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
 
     public Meta() {
     }
 
-    public Meta(long id, String descricao, Date data, String metascol,
-                String dificuldade, Status status) {
+
+    public Meta(long id, String descricao, Date data,String dificuldade, String status, Empresa empresa) {
         this.id = id;
         this.descricao = descricao;
         this.data = data;
-        this.metascol = metascol;
         this.dificuldade = dificuldade;
         this.status = status;
+        this.empresa = empresa;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public long getId() {
@@ -64,14 +79,6 @@ public class Meta {
         this.data = data;
     }
 
-    public String getMetascol() {
-        return metascol;
-    }
-
-    public void setMetascol(String metascol) {
-        this.metascol = metascol;
-    }
-
     public String getDificuldade() {
         return dificuldade;
     }
@@ -80,11 +87,4 @@ public class Meta {
         this.dificuldade = dificuldade;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }

@@ -20,6 +20,8 @@ public class Funcionario {
 
     private String senha;
 
+    private long funcional;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "funcionario_id")
     private List<Meta> metas = new ArrayList();
@@ -35,15 +37,23 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(long id, String nome, String email,
-                       String cargo, String senha, List<Meta> metas, Empresa empresa) {
+    public Funcionario(long id, String nome, String email, String cargo, String senha, long funcional, List<Meta> metas, Empresa empresa) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cargo = cargo;
         this.senha = senha;
+        this.funcional = funcional;
         this.metas = metas;
         this.empresa = empresa;
+    }
+
+    public long getFuncional() {
+        return funcional;
+    }
+
+    public void setFuncional(long funcional) {
+        this.funcional = funcional;
     }
 
     public List<Meta> getMetas() {
