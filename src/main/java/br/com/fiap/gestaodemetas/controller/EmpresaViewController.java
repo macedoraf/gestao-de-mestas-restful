@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,7 +29,19 @@ public class EmpresaViewController {
     @PostMapping("/cadastra-empresa")
     public String cadastraEmpresa(@ModelAttribute("empresa") Empresa empresa, BindingResult result, Model model) {
         Empresa resultEmpresa = empresaService.create(empresa);
+        return "redirect:/lista-empresa";
+    }
+
+    @GetMapping("/cadastra-empresa")
+    public String cadastraEmpresaView() {
         return "cadastra-empresa";
+    }
+
+
+    @GetMapping("/deleta-empresa/{id}")
+    public String deletaEmpresa(@PathVariable("id") long id) {
+        empresaService.delete(id);
+        return "redirect:/lista-empresa";
     }
 
 }

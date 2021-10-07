@@ -31,11 +31,6 @@ public class IndexController {
     @Autowired
     public EmpresaService empresaService;
 
-    @Autowired
-    public MetaService metaService;
-
-    public Meta meta = new Meta();
-
     public List<Empresa> empresasDisponiveis = new ArrayList<>();
 
 
@@ -55,14 +50,7 @@ public class IndexController {
         }
     }
 
-    @PostMapping("/cadastra-meta")
-    public String cadastraMeta(@ModelAttribute("meta") Meta meta, BindingResult result, Model model) {
-        Meta resultMeta = metaService.create(meta);
-        return redirect(model);
-    }
-
     private String redirect(Model model) {
-        model.addAttribute("meta", meta);
         model.addAttribute("empresas", empresasDisponiveis);
         empresasDisponiveis.clear();
         empresasDisponiveis.addAll(empresaService.getAll());

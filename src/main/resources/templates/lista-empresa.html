@@ -8,6 +8,8 @@
             <th> ID</th>
             <th> Nome</th>
             <th> CNPJ</th>
+            <th>Editar</th>
+            <th>Deletar</th>
         </tr>
         </thead>
         <tbody>
@@ -18,9 +20,12 @@
             <td><span th:text="${empresa.id}"> </span></td>
             <td><span th:text="${empresa.nome}"> </span></td>
             <td><span th:text="${empresa.cnpj}"> </span></td>
+            <td><a th:href="@{/edit/{id}(id=${empresa.id})}">Editar</a></td>
+            <td><a th:href="@{/deleta-empresa/{id}(id=${empresa.id})}">Deletar</a></td>
         </tr>
         </tbody>
     </table>
+    <p><a href="/cadastra-empresa">ADD</a></p>
 </main>
 </body>
 </html>

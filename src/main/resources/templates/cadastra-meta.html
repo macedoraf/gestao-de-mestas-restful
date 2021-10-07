@@ -1,0 +1,42 @@
+<html th:replace="~{base :: layout (~{:: main})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<main>
+    <form method="post" action="#" th:object="${meta}" th:action="@{/cadastra-meta}">
+        <div class="form-group">
+            <label for="descricao-meta">Descrição</label>
+            <input type="text" class="form-control" id="descricao-meta" aria-describedby="emailHelp"
+                   placeholder="Descrição" th:field="*{descricao}">
+        </div>
+
+        <div class="form-group">
+            <label for="data-meta">Data</label>
+            <input type="text" class="form-control" id="data-meta"
+                   placeholder="YYYY/MM/DD" th:field="*{data}">
+        </div>
+
+        <div class="form-group">
+            <label for="Dificuldade-meta">Dificuldade</label>
+            <input type="text" class="form-control" id="Dificuldade-meta"
+                   placeholder="Dificuldade" th:field="*{dificuldade}">
+        </div>
+
+        <div class="form-group">
+            <label for="Status-meta">Status</label>
+            <input type="text" class="form-control" id="Status-meta"
+                   placeholder="Status" th:field="*{status}">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="meta-empresa">Empresa</label>
+            <select id="meta-empresa" th:field="*{empresa}">
+                <option th:each="item : ${empresas}" th:value="${item}" th:utext="${item.nome}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</main>
+</body>
+</html>
+

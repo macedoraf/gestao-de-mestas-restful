@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -30,7 +31,19 @@ public class FuncionarioViewController {
     @PostMapping("/cadastra-funcionario")
     public String cadastraEmpresa(@ModelAttribute("funcionario") Funcionario funcionario, BindingResult result, Model model) {
         Funcionario resultEmpresa = funcionarioService.create(funcionario);
-        return "cadastra-empresa";
+        return "redirect:/lista-funcionario";
+    }
+
+    @GetMapping("/deleta-funcionario/{id}")
+    public String deletaFuncionario(@PathVariable("id") long id) {
+        funcionarioService.delete(id);
+        return "redirect:/lista-funcionario";
+    }
+
+    @GetMapping("/cadastra-funcionario")
+    public String cadastraEmpresaView(Model model) {
+        model.addAttribute("funcionario", new Funcionario());
+        return "cadastra-funcionario";
     }
 
 }

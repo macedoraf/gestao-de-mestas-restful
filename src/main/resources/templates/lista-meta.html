@@ -2,41 +2,36 @@
       xmlns:th="http://www.w3.org/1999/xhtml">
 <body>
 <main>
-    <form method="post" action="#" th:object="${meta}" th:action="@{/cadastra-meta}">
-        <div class="form-group">
-            <label for="descricao-meta">Descrição</label>
-            <input type="text" class="form-control" id="descricao-meta" aria-describedby="emailHelp"
-                   placeholder="Descrição" th:field="*{descricao}">
-        </div>
-
-        <div class="form-group">
-            <label for="data-meta">Data</label>
-            <input type="text" class="form-control" id="data-meta"
-                   placeholder="YYYY/MM/DD" th:field="*{data}">
-        </div>
-
-        <div class="form-group">
-            <label for="Dificuldade-meta">Dificuldade</label>
-            <input type="text" class="form-control" id="Dificuldade-meta"
-                   placeholder="Dificuldade" th:field="*{dificuldade}">
-        </div>
-
-        <div class="form-group">
-            <label for="Status-meta">Status</label>
-            <input type="text" class="form-control" id="Status-meta"
-                   placeholder="Status" th:field="*{status}">
-        </div>
-
-        <div class="form-group col-md-4">
-            <label for="meta-empresa">Empresa</label>
-            <select id="meta-empresa" th:field="*{empresa}">
-                <option th:each="item : ${empresas}" th:value="${item}" th:utext="${item.nome}">
-                </option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th> Descrição</th>
+            <th> Data</th>
+            <th> Dificuldade</th>
+            <th> Status</th>
+            <th> Empresa</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${metas.empty}">
+            <td colspan="2"> Sem metas cadastrados</td>
+        </tr>
+        <tr th:each="m : ${metas}">
+            <td><span th:text="${m.id}"> </span></td>
+            <td><span th:text="${m.descricao}"> </span></td>
+            <td><span th:text="${m.data}"> </span></td>
+            <td><span th:text="${m.dificuldade}"> </span></td>
+            <td><span th:text="${m.status}"> </span></td>
+            <td><span> </span></td>
+            <td><a th:href="@{/edit/{id}(id=${m.id})}">Editar</a></td>
+            <td><a th:href="@{/deleta-meta/{id}(id=${m.id})}">Deletar</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <p><a href="/cadastra-meta">ADD</a></p>
 </main>
 </body>
 </html>
-

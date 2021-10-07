@@ -14,14 +14,14 @@ repositories {
 
 dependencies {
 
-    implementation 'org.postgresql:postgresql:42.2.23.jre7'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql:42.2.24.jre7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.5'
     implementation group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.5.Final'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    implementation 'com.zaxxer:HikariCP:3.4.1'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.4'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.5'
+    implementation 'com.zaxxer:HikariCP:5.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.5'
 	implementation 'org.webjars:bootstrap:5.1.1'
     implementation 'org.thymeleaf:thymeleaf:3.0.12.RELEASE'
 
