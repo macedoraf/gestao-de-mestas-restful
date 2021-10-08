@@ -1,18 +1,11 @@
 package br.com.fiap.gestaodemetas.service;
 
 import br.com.fiap.gestaodemetas.base.BaseService;
-import br.com.fiap.gestaodemetas.entity.Empresa;
 import br.com.fiap.gestaodemetas.entity.Usuario;
-import br.com.fiap.gestaodemetas.repository.EmpresaRepository;
 import br.com.fiap.gestaodemetas.repository.UsuarioRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 @Service
 public class UsuarioService extends BaseService<Usuario> {
