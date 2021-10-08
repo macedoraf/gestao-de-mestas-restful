@@ -27,7 +27,6 @@ public class MetaViewController {
     public String index(@ModelAttribute("meta") Meta meta, Model model) {
         this.meta = meta;
         model.addAttribute("metas", metaService.getAll());
-        model.addAttribute("empresas", empresaService.getAll());
         return "lista-meta";
     }
 
@@ -46,6 +45,7 @@ public class MetaViewController {
     @GetMapping("/cadastra-meta")
     public String cadastrametaView(Model model) {
         model.addAttribute("meta", new Meta());
+        model.addAttribute("empresas", empresaService.getAll());
         return "cadastra-meta";
     }
 }
