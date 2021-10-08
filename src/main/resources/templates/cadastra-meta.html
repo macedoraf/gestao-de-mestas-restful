@@ -30,7 +30,7 @@
         <div class="form-group col-md-4">
             <label for="meta-empresa">Empresa</label>
             <select id="meta-empresa" th:field="*{empresa}">
-                <option th:each="item : ${empresas}" th:value="${item}" th:utext="${item.nome}">
+                <option th:each="item : ${empresas}" th:value="${item.id}" th:utext="${item.nome}">
                 </option>
             </select>
         </div>

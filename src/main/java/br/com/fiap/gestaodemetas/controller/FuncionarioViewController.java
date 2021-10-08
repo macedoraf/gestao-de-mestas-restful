@@ -21,6 +21,9 @@ public class FuncionarioViewController {
     @Autowired
     public FuncionarioService funcionarioService;
 
+    @Autowired
+    public EmpresaService empresaService;
+
     @GetMapping("lista-funcionario")
     public String index(@ModelAttribute("funcionario") Funcionario funcionario, Model model) {
         this.funcionario = funcionario;
@@ -43,6 +46,7 @@ public class FuncionarioViewController {
     @GetMapping("/cadastra-funcionario")
     public String cadastraEmpresaView(Model model) {
         model.addAttribute("funcionario", new Funcionario());
+        model.addAttribute("empresas", empresaService.getAll());
         return "cadastra-funcionario";
     }
 

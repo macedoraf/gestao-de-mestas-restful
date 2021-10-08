@@ -48,6 +48,10 @@ public class Funcionario {
         this.empresa = empresa;
     }
 
+    public String getNomeEmpresa() {
+        return empresa.getNome();
+    }
+
     public long getFuncional() {
         return funcional;
     }

@@ -2,6 +2,22 @@
       xmlns:th="http://www.w3.org/1999/xhtml">
 <body>
 <main>
+    <form method="post" action="#" th:object="${empresa}" th:action="@{/cadastra-empresa}">
+        <div class="form-group">
+            <label for="none-empresa">Nome</label>
+            <input type="text" class="form-control" id="none-empresa"
+                   placeholder="Nome" th:field="*{nome}">
+        </div>
+
+        <div class="form-group">
+            <label for="empresa-cnpj">CNPJ</label>
+            <input type="text" class="form-control" id="empresa-cnpj"
+                   placeholder="CNPJ" th:field="*{cnpj}">
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+        </div>
+    </form>
 
 </main>
 </body>

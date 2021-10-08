@@ -36,7 +36,7 @@ public class IndexController {
 
     @GetMapping
     public String index(@ModelAttribute("user") Usuario user) {
-        return "index";
+        return "index_2";
     }
 
     @PostMapping("/login")

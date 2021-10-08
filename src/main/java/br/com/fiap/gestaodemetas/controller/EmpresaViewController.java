@@ -33,7 +33,8 @@ public class EmpresaViewController {
     }
 
     @GetMapping("/cadastra-empresa")
-    public String cadastraEmpresaView() {
+    public String cadastraEmpresaView(Model model) {
+        model.addAttribute(new Empresa());
         return "cadastra-empresa";
     }
 
