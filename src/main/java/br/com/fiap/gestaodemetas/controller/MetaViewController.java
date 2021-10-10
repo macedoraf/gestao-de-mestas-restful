@@ -33,7 +33,7 @@ public class MetaViewController {
         return "lista-meta";
     }
 
-    @PostMapping("/cadastra-meta/{id}")
+    @PostMapping("/cadastra-meta")
     public String cadastraMeta(@ModelAttribute("meta") Meta meta, BindingResult result, Model model) {
         if (meta.getId() != 0) {
             metaService.update(meta.getId(), meta);
