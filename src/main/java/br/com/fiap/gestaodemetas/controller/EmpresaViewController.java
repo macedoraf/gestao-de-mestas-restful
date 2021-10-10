@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.function.Consumer;
+
 @Controller
 public class EmpresaViewController {
 
@@ -28,7 +30,12 @@ public class EmpresaViewController {
 
     @PostMapping("/cadastra-empresa")
     public String cadastraEmpresa(@ModelAttribute("empresa") Empresa empresa, BindingResult result, Model model) {
-        Empresa resultEmpresa = empresaService.create(empresa);
+        if (empresa.getId() != 0) {
+            empresaService.update(empresa.getId(), empresa);
+        } else {
+            empresaService.create(empresa);
+        }
+
         return "redirect:/lista-empresa";
     }
 
@@ -45,4 +52,18 @@ public class EmpresaViewController {
         return "redirect:/lista-empresa";
     }
 
+    @GetMapping("/cadastra-empresa/{id}")
+    public String atualizaEmpresaView(@PathVariable("id") long id, Model model) {
+        empresaService.getAll().forEach(new Consumer<Empresa>() {
+            @Override
+            public void accept(Empresa empresa) {
+                if (empresa.getId() == id) {
+                    model.addAttribute("empresa", empresa);
+                }
+            }
+        });
+
+        return "cadastra-empresa";
+
+    }
 }

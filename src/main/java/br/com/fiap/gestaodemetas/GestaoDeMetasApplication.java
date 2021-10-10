@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableJpaRepositories("br.com.fiap.repository")
+@EnableJpaRepositories("br.com.fiap.gestaodemetas.repository")
 public class GestaoDeMetasApplication {
 
 	public static void main(String[] args) {

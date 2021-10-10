@@ -3,6 +3,12 @@
 <body>
 <main>
     <form method="post" action="#" th:object="${empresa}" th:action="@{/cadastra-empresa}">
+
+        <div class="form-group">
+            <label for="id-empresa">Id</label>
+            <input type="text" class="form-control" id="id-empresa"
+                   placeholder="Nome" th:field="*{id}" disabled="disabled">
+        </div>
         <div class="form-group">
             <label for="none-empresa">Nome</label>
             <input type="text" class="form-control" id="none-empresa"
@@ -11,10 +17,10 @@
 
         <div class="form-group">
             <label for="empresa-cnpj">CNPJ</label>
-            <input type="text" class="form-control" id="empresa-cnpj"
+            <input type="number" class="form-control" id="empresa-cnpj"
                    placeholder="CNPJ" th:field="*{cnpj}">
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
 
         </div>
     </form>

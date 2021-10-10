@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.function.Consumer;
+
 @Controller
 public class FuncionarioViewController {
 
@@ -44,8 +46,23 @@ public class FuncionarioViewController {
     }
 
     @GetMapping("/cadastra-funcionario")
-    public String cadastraEmpresaView(Model model) {
+    public String cadastraFuncionarioView(Model model) {
         model.addAttribute("funcionario", new Funcionario());
+        model.addAttribute("empresas", empresaService.getAll());
+        return "cadastra-funcionario";
+    }
+
+    @GetMapping("/cadastra-funcionario/{id}")
+    public String atualizaFuncionarioView(@PathVariable("id") long id, Model model) {
+        funcionarioService.getAll().forEach(new Consumer<Funcionario>() {
+            @Override
+            public void accept(Funcionario funcionario) {
+                if (funcionario.getId() == id) {
+                    model.addAttribute("funcionario", funcionario);
+                }
+            }
+        });
+
         model.addAttribute("empresas", empresaService.getAll());
         return "cadastra-funcionario";
     }

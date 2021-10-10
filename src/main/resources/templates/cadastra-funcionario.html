@@ -4,6 +4,11 @@
 <main>
     <h3>Funcionario</h3>
     <form method="post" action="#" th:object="${funcionario}" th:action="@{/cadastra-funcionario}">
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="id-funcionario" disabled="disabled"
+                   placeholder="Id" th:field="*{id}">
+        </div>
         <div class="form-group">
             <label for="nome-funcionario">Nome</label>
             <input type="text" class="form-control" id="nome-funcionario" aria-describedby="emailHelp"
