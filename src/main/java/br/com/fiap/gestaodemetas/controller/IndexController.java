@@ -39,6 +39,18 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/cadastra-usuario")
+    public String cadastraViewUsuario(Model model) {
+        model.addAttribute(new Usuario());
+        return "cadastra-usuario";
+    }
+
+    @PostMapping("/cadastra-usuario")
+    public String cadastraUsuario(Model model, @ModelAttribute("user") Usuario user) {
+        usuarioService.create(user);
+        return "cadastra-usuario";
+    }
+
     @PostMapping("/login")
     public String login(@ModelAttribute("user") Usuario user, BindingResult result, Model model) {
         Optional<Usuario> userResult = usuarioService.login(user.getEmail(), user.getPassword());
