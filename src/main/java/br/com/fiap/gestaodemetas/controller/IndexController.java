@@ -36,7 +36,7 @@ public class IndexController {
 
     @GetMapping
     public String index(@ModelAttribute("user") Usuario user) {
-        return "index";
+        return "login_screen";
     }
 
     @GetMapping("/cadastra-usuario")
@@ -58,7 +58,7 @@ public class IndexController {
         if (isSuccess) {
             return redirect(model);
         } else {
-            return "index";
+            return "login_screen";
         }
     }
 

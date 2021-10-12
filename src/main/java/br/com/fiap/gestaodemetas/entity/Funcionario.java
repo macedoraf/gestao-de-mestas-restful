@@ -35,6 +35,7 @@ public class Funcionario {
     }
 
     public Funcionario() {
+        metas = new ArrayList<>();
     }
 
     public Funcionario(long id, String nome, String email, String cargo, String senha, long funcional, List<Meta> metas, Empresa empresa) {
