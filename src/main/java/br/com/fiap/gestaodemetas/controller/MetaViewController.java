@@ -58,7 +58,7 @@ public class MetaViewController {
     }
 
     @GetMapping("/cadastra-meta/{id}")
-    public String atualizaFuncionarioView(@PathVariable("id") long id, Model model) {
+    public String atualizaMetaView(@PathVariable("id") long id, Model model) {
         metaService.getAll().forEach(new Consumer<Meta>() {
             @Override
             public void accept(Meta Meta) {

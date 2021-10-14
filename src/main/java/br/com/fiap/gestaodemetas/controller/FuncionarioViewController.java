@@ -2,8 +2,10 @@ package br.com.fiap.gestaodemetas.controller;
 
 import br.com.fiap.gestaodemetas.entity.Empresa;
 import br.com.fiap.gestaodemetas.entity.Funcionario;
+import br.com.fiap.gestaodemetas.entity.Meta;
 import br.com.fiap.gestaodemetas.service.EmpresaService;
 import br.com.fiap.gestaodemetas.service.FuncionarioService;
+import br.com.fiap.gestaodemetas.service.MetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ public class FuncionarioViewController {
 
     @Autowired
     public FuncionarioService funcionarioService;
+
+    @Autowired
+    public MetaService metaService;
 
     @Autowired
     public EmpresaService empresaService;
@@ -65,6 +70,21 @@ public class FuncionarioViewController {
 
         model.addAttribute("empresas", empresaService.getAll());
         return "cadastra-funcionario";
+    }
+
+    @GetMapping("metas-funcionario/{id}")
+    public String metasFuncionario(@PathVariable("id") long id, Model model) {
+        model.addAttribute("metas", metaService.getAll());
+        model.addAttribute("meta-selecionada", new Meta());
+        funcionarioService.getAll().forEach(new Consumer<Funcionario>() {
+            @Override
+            public void accept(Funcionario funcionario) {
+                if (funcionario.getId() == id) {
+                    model.addAttribute("funcionario", funcionario);
+                }
+            }
+        });
+        return "metas-funcionario";
     }
 
 }

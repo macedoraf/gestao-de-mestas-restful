@@ -12,6 +12,7 @@
             <th>Senha</th>
             <th>Funcional</th>
             <th>Empresa</th>
+            <th>Metas</th>
             <th>Editar</th>
             <th>Deletar</th>
         </tr>
@@ -28,6 +29,7 @@
             <td><span th:text="${funcionario.senha}"> </span></td>
             <td><span th:text="${funcionario.funcional}"> </span></td>
             <td><span th:text="${funcionario.nomeEmpresa}"> </span></td>
+            <td><a th:href="@{/metas-funcionario/{id}(id=${funcionario.id})}">Ver metas</a></td>
             <td><a th:href="@{/cadastra-funcionario/{id}(id=${funcionario.id})}">Editar</a></td>
             <td><a th:href="@{/deleta-funcionario/{id}(id=${funcionario.id})}">Deletar</a></td>
         </tr>
